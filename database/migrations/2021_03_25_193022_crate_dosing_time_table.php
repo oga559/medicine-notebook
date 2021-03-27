@@ -18,7 +18,7 @@ class CrateDosingTimeTable extends Migration
             $table->unsignedInteger('user_id');
             $table->datetime('dosing_time');
             $table->string('drug_name', 255);
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->boolean('dosing_flag');
             $table->timestamps();
         });

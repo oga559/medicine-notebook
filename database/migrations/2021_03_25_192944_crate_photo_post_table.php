@@ -16,11 +16,11 @@ class CratePhotoPostTable extends Migration
         Schema::create('photo_posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('medical_factories_id');
+            $table->unsignedInteger('medical_factories_id')->nullable();
             $table->binary('photo');
             $table->datetime('prescription_date');
-            $table->string('medical_subjects', 100);
-            $table->text('note');
+            $table->string('medical_subjects', 100)->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

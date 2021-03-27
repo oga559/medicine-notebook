@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+Route::get('/', function () {
+    return view('index');
+})->name('index');
+Route::resource('post', PostController::class)->only([
+    'create',
+    'store'
+]);
+Route::resource('dosing', DosingController::class)->only([
+    'create',
+    'store'
+]);
 
-Route::get('/home', 'HomeController@index')->name('home');
