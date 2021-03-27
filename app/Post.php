@@ -1,0 +1,27 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    protected $fillable = [
+        'id',
+        'user_id',
+        'medical_factories_id',
+        'drug_name',
+        'medical_subjects',
+        'note',
+        'week'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function medical_factory()
+    {
+        return $this->hasOne(Medical_factory::class);
+    }
+}
