@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>お薬登録ページ</title>
+    <title>画像登録</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
@@ -15,19 +15,19 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-    <title>お薬登録ページ</title>
+    <title>画像投稿ページ</title>
 </head>
 <body>
     @include('header')
-    <form action="{{ route('post.store') }}" method="POST">
-        @csrf 
+    <form action="{{ route('photo.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <input type="hidden" value="{{ Auth::id() }}" name="user_id">
         <div>
-            <input type="text" name="drug_name" placeholder="お薬名を指定して下さい">
+            <input type="file" name="photo">
         </div>
         <div class="error">
-            @if($errors->has("drug_name")) 
-                {{ $errors->first("drug_name") }} 
+            @if($errors->has("photo")) 
+                {{ $errors->first("photo") }} 
             @endif 
         </div>
         <div>
@@ -65,6 +65,6 @@
         <div>
             <input type="submit" value="お薬登録">
         </div>
-    </form>
+    </form> 
 </body>
 </html>
