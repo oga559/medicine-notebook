@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'IndexController@index')->middleware('auth')->name('index');
+Route::get('update', 'IndexController@update')->name('update');
+Route::get('delete', 'IndexController@delete')->name('delete');
+Route::get('show', 'ShowController@show')->middleware('auth')->name('show');
 Route::resource('post', PostController::class)->only([
     'create',
     'store'
 ]);
 Route::resource('dosing', DosingController::class)->only([
+    'create',
+    'store'
+]);
+Route::resource('photo', PhotoPostController::class)->only([
     'create',
     'store'
 ]);

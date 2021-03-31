@@ -11,6 +11,7 @@ class Post extends Model
         'user_id',
         'medical_factories_id',
         'drug_name',
+        'prescription_date',
         'medical_subjects',
         'note',
         'week'
