@@ -13,7 +13,7 @@ class Postcontroller extends Controller
     public function create()
     {
         $factory_select = Medical_factory::all();
-        return view('create', compact('factory_select'));
+        return view('post_create', compact('factory_select'));
     }
     public function store(Request $request)
     {

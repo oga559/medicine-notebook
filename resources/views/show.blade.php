@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,23 +13,38 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
     <title>お薬登録ページ</title>
 </head>
+<body>
     @include('header')
-{{-- 
-@foreach ($user_photo as $photo)
-@foreach ($user_posts as $posts)
-    
-@if ($now->gte($photo->prescription_date)or($now->gte($posts->prescription_date)))
-@isset($photo)
-<div>
-    <img src="../../uploads/{{ $photo->photo }}" width="200px" height="200px">
-</div>
-@endisset
-    <p>{{ $posts->drug_name }}</p>            
-@else
-
-@endif
-@endforeach
-@endforeach --}}
+    <div>
+        <h2>お薬投稿</h2>
+        @foreach($post as $posts)         
+        <h4>お薬名：{{ $posts->drug_name }}</h4>
+        <p>処方日：{{ Str::limit($posts->prescription_date,10,'') }}</p>
+        {{-- 診療科目を登録しているか判断する --}}
+        @if($posts->medical_subjects)
+            <p>診療科目：{{ $posts->medical_subjects }}</p>
+        @else
+            <p>診療科目：診療科目が登録されていません</p> 
+        @endif
+        <a href="{{ route('post_edit',$posts->id) }}">編集ページ</a>
+        <hr>
+        @endforeach
+    </div>
+    <hr>
+    <div>
+        <h2>画像登録</h2>
+        @foreach($photo as $photos)
+        <span>お薬画像：</span><img src="storage/images/{{ $photos->photo }}" width="200px" height="100px">
+            <p>処方日：{{ Str::limit($photos->prescription_date,10,'') }}</p>
+            @if($photos->medical_subjects)
+                <p>診療科目：{{ $photos->medical_subjects }}</p>
+            @else
+                <p>診療科目：診療科目が登録されていません</p> 
+            @endif
+            <a href="{{ route('photo_edit',$photos->id) }}">編集ページ</a>
+            <hr>
+        @endforeach    
+    </div>
+</body>
