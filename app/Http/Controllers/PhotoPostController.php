@@ -44,14 +44,9 @@ class PhotoPostController extends Controller
                 'note.max'    => 'メモは、300文字以下で入力してください',
             ]
         );
-        if ($file = $request->photo) {
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('uploads/');
-            $file->move($target_path, $fileName);
-        } else {
-            $fileName = "";
-        }
-        
+  
+        $path = $request->photo->store('public/images');   
+        $filename = basename($path);
         //DBに保存
         $member = new Photo_post();
         $member->user_id = $request->user_id;
@@ -59,9 +54,8 @@ class PhotoPostController extends Controller
         $member->medical_subjects = $request->medical_subjects;
         $member->note = $request->note;
         $member->prescription_date = $request->prescription_date;
-        $member->photo = $fileName;
+        $member->photo = $filename;
         $member->save();
-
         return redirect('/');
     }
 
