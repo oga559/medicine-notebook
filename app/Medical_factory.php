@@ -13,10 +13,10 @@ class Medical_factory extends Model
 
     public function post()
     {
-        return $this->belongsTo(Post::class);
+        return $this->hasOne(Post::class);
     }
     public function photo_post()
     {
-        return $this->belongsTo(Photo_post::class);
+        return $this->hasOne(Photo_post::class);
     }
 }

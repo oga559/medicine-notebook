@@ -50,7 +50,7 @@ class PhotoPostController extends Controller
         //DBに保存
         $member = new Photo_post();
         $member->user_id = $request->user_id;
-        $member->medical_factories_id = $request->medical_factories_id;
+        $member->medical_factory_id = $request->medical_factory_id;
         $member->medical_subjects = $request->medical_subjects;
         $member->note = $request->note;
         $member->prescription_date = $request->prescription_date;

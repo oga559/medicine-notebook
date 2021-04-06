@@ -9,6 +9,7 @@
     <title>画像登録</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -25,7 +26,8 @@
         <input type="hidden" value="{{ Auth::id() }}" name="user_id">
         <input type="hidden" name="id" value="{{ $photo->id }}">
         <div>
-            <input type="file" name="photo">
+            <img src="{{ asset('storage/images/'.$select_change) }}" id="img" width="200px" height="100px">
+            <input id="profile_image" type="file" name="photo" onchange="previewImage(this);">
         </div>
         <div class="error">
             @if($errors->has("photo")) 
@@ -49,20 +51,20 @@
             @endif 
         </div>
         <div>
-            <select name="medical_factories_id">
+            <select name="medical_factory_id">
                 <option value="0">医療施設を選択してください</option>
                 @foreach($factory_select as $factory_selects)
                 {{-- 登録画面で登録していたか判断し、登録していたらoptionを保持して選択済みにする --}}
-                @if ($photo->medical_factories_id === $factory_selects->id)
-                    <option value="{{ $photo->medical_factories_id }}" selected>{{ $factory_selects->factory_name }}</option>
+                @if ($photo->medical_factory_id === $factory_selects->id)
+                    <option value="{{ $photo->medical_factory_id }}" selected>{{ $factory_selects->factory_name }}</option>
                 @else
-                    <option value="{{ $factory_selects->id,old('medical_factories_id') }}">{{ $factory_selects->factory_name }}</option>
+                    <option value="{{ $factory_selects->id,old('medical_factory_id') }}">{{ $factory_selects->factory_name }}</option>
                 @endif
                 @endforeach
             </select>
         </div>
         <div>
-            <textarea name="note" cols="30" rows="10" placeholder="メモ" value="{{ old('note') }}">@if(old('note') == ''){{$photo->note}}@else{{ old('note') }}@endif</textarea>
+            <textarea name="note" cols="30" rows="10" placeholder="メモ" value="{{ old('note') }}">@if(old('note') == ''){{ $photo->note }}@else{{ old('note') }}@endif</textarea>
         </div>
         <div class="error">
             @if($errors->has("note")) 
@@ -79,5 +81,15 @@
         <input type="hidden" name="id" value="{{ $photo->id }}">
         <input type="submit" value="削除します">
     </form>
+    <script>
+        function previewImage(obj)
+            {
+              var fileReader = new FileReader();
+              fileReader.onload = (function() {
+                document.getElementById('img').src = fileReader.result;
+              });
+              fileReader.readAsDataURL(obj.files[0]);
+            }
+    </script>
 </body>
 </html>

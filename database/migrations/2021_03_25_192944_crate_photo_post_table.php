@@ -16,7 +16,7 @@ class CratePhotoPostTable extends Migration
         Schema::create('photo_posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('medical_factories_id')->nullable();
+            $table->unsignedInteger('medical_factory_id')->nullable();
             $table->text('photo');
             $table->datetime('prescription_date');
             $table->string('medical_subjects', 100)->nullable();

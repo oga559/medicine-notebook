@@ -13,9 +13,23 @@
                 <ul class="navbar-nav mr-auto">
 
                 </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('index') }}">ユーザーページ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('post.create') }}">お薬登録</a>
+                    </li>
+                    <a class="nav-link" href="{{ route('photo.create') }}">画像登録</a>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('dosing.create') }}">服用時間登録</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('show') }}">お薬手帳</a>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">

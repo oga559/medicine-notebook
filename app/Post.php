@@ -9,7 +9,7 @@ class Post extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'medical_factories_id',
+        'medical_factory_id',
         'drug_name',
         'prescription_date',
         'medical_subjects',
@@ -23,6 +23,6 @@ class Post extends Model
     }
     public function medical_factory()
     {
-        return $this->hasOne(Medical_factory::class);
+        return $this->belongsTo(Medical_factory::class);
     }
 }

@@ -8,7 +8,7 @@ class Photo_post extends Model
 {
     protected $fillable = [
         'user_id',
-        'medical_factories_id',
+        'medical_factory_id',
         'photo',
         'prescription_date',
         'medical_subjects',
@@ -21,6 +21,6 @@ class Photo_post extends Model
     }
     public function medical_factory()
     {
-        return $this->hasOne(Medical_factory::class);
+        return $this->belongsTo(Medical_factory::class);
     }
 }

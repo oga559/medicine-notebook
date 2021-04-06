@@ -16,7 +16,7 @@ class CratePostTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('medical_factories_id')->nullable();
+            $table->unsignedInteger('medical_factory_id')->nullable();
             $table->string('drug_name', 255);
             $table->datetime('prescription_date');
             $table->string('medical_subjects', 100)->nullable();
