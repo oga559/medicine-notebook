@@ -18,40 +18,39 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
 </head>
 <body>
-    @include('header')
     <main class="py-4">
-        <a href="route('calendar')">かれんだー</a>
-            @foreach ($expired as $dosing)
-                <div class="alert">
-                    <form action="{{ route('flag_update') }}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <span>まだお薬を飲んでいません</span>
-                        <p>お薬名：{{ $dosing->drug_name }}</p>
-                        <p>服用時間：{{ Str::limit($dosing->dosing_time,16,'') }}</p>
-                        <input type="hidden" value="{{ $dosing->id }}" name="id">
-                        <input type="hidden" value="0" name="dosing_flag">
-                        <input type="submit" value="お薬飲みました">
-                    </form>
-                </div>
-                <hr>
-            @endforeach
-            <h2>服用予約一覧</h2>
+        @include('header')
+        @foreach ($expired as $dosing)
+            <div class="alert">
+                <form action="{{ route('flag_update') }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <span>まだお薬を飲んでいません</span>
+                    <p>お薬名：{{ $dosing->drug_name }}</p>
+                    <p>服用時間：{{ Str::limit($dosing->dosing_time,16,'') }}</p>
+                    <input type="hidden" value="{{ $dosing->id }}" name="id">
+                    <input type="hidden" value="0" name="dosing_flag">
+                    <input type="submit" value="お薬飲みました">
+                </form>
+            </div>
             <hr>
-            @foreach ($still as $dosing)
-                <div>
-                    <form action="{{ route('delete') }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <span>服用時間はまだです</span>
-                        <p>お薬名：{{ $dosing->drug_name }}</p>
-                        <p>服用時間：{{ Str::limit($dosing->dosing_time,16,'') }}</p>
-                        <input type="hidden" value="{{ $dosing->id }}" name="id">
-                        <input type="submit" value="登録を削除します">
-                    </form>
-                </div>
-                <hr>
-            @endforeach
+        @endforeach
+        <h2>服用予約一覧</h2>
+        <hr>
+        @foreach ($still as $dosing)
+            <div>
+                <form action="{{ route('delete') }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <span>服用時間はまだです</span>
+                    <p>お薬名：{{ $dosing->drug_name }}</p>
+                    <p>服用時間：{{ Str::limit($dosing->dosing_time,16,'') }}</p>
+                    <input type="hidden" value="{{ $dosing->id }}" name="id">
+                    <input type="submit" value="登録を削除します">
+                </form>
+            </div>
+            <hr>
+        @endforeach
     </main>
 </body>
 </html>
