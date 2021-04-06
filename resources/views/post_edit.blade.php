@@ -8,6 +8,7 @@
     <title>お薬履歴ページ</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/photo_edit.js') }}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -47,14 +48,14 @@
             @endif 
         </div>
         <div>
-            <select name="medical_factories_id">
+            <select name="medical_factory_id">
                 <option value="0">医療施設を選択してください</option>
                     @foreach($factory_select as $factory_selects)
                     {{-- 薬登録で登録していた場合の登録していたoptionを選択済みにする --}}
-                    @if ($post->medical_factories_id === $factory_selects->id)
-                        <option value="{{ $post->medical_factories_id }}" selected>{{ $factory_selects->factory_name }}</option>
+                    @if ($post->medical_factory_id === $factory_selects->id)
+                        <option value="{{ $post->medical_factory_id }}" selected>{{ $factory_selects->factory_name }}</option>
                     @else
-                    <option value="{{ $factory_selects->id,old('medical_factories_id') }}">{{ $factory_selects->factory_name }}</option>
+                    <option value="{{ $factory_selects->id,old('medical_factory_id') }}">{{ $factory_selects->factory_name }}</option>
                     @endif
                     @endforeach
             </select>
@@ -78,3 +79,4 @@
         <input type="submit" value="削除します">
     </form>
 </body>
+</html>

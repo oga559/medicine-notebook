@@ -8,16 +8,20 @@ use Carbon\Carbon;
 use App\Post;
 use App\Photo_post;
 use App\Medical_factory;
+use Faker\Provider\Medical;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Expr\AssignOp\Pow;
 
 class ShowController extends Controller
 {
     public function show()
     {
-      $user = Auth::user();
+      $user = Auth::id();
       $now = Carbon::now();
-      $post = $user->posts->sortBy('dosing_time');
-      $photo = $user->photo_posts->sortBy('dosing_time');
+      $post = Post::where('user_id',$user)->orderBy('prescription_date','asc')->get();
+      $photo = Photo_post::where('user_id',$user)->orderBy('prescription_date','asc')->get();
+      //  $post = $user->posts->sortBy('prescription_date');
+      // $photo = $user->photo_posts->sortBy('prescription_date');
       return view('show',compact('now','post','photo'));
     }
     public function post_edit(Post $post)
@@ -28,7 +32,8 @@ class ShowController extends Controller
     public function photo_edit(Photo_post $photo)
     {
       $factory_select = Medical_factory::all();
-      return view('photo_edit',compact('photo','factory_select'));
+      $select_change = $photo->photo;
+      return view('photo_edit',compact('photo','factory_select','select_change'));
     }
     public function post_update(Request $request)
     {
@@ -50,10 +55,6 @@ class ShowController extends Controller
     );
       $update_post = Post::find($request->id);
       $update_post->fill($request->all())->save();
-      $user = Auth::user();
-      $now = Carbon::now();
-      $post = $user->posts->sortBy('dosing_time');
-      $photo = $user->photo_posts->sortBy('dosing_time');
       return redirect('show');
     }
     public function photo_update(Request $request)
@@ -86,7 +87,7 @@ class ShowController extends Controller
       $filename = basename($path);
       //更新したデータをdbに保存する
       $member = Photo_post::find($request->id);
-      $member->medical_factories_id = $request->medical_factories_id;
+      $member->medical_factory_id = $request->medical_factory_id;
       $member->medical_subjects = $request->medical_subjects;
       $member->note = $request->note;
       $member->prescription_date = $request->prescription_date;
@@ -95,7 +96,7 @@ class ShowController extends Controller
       return redirect('show');
     }
     public function post_delete(Request $request){
-      $delPhoto = Post::find($request->id);
+      Post::destroy($request->id);
       return redirect('show');
     }
     public function photo_delete(Request $request){

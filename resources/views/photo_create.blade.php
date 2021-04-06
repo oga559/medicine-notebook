@@ -9,6 +9,7 @@
     <title>画像登録</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src='/js/photo_create.js'></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,9 +22,10 @@
     @include('header')
     <form action="{{ route('photo.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <img id="img">
         <input type="hidden" value="{{ Auth::id() }}" name="user_id">
         <div>
-            <input type="file" name="photo">
+            <input id="profile_image" type="file" name="photo" onchange="previewImage(this);">
         </div>
         <div class="error">
             @if($errors->has("photo")) 
@@ -47,10 +49,10 @@
             @endif 
         </div>
         <div>
-            <select name="medical_factories_id">
+            <select name="medical_factory_id">
                 <option value="0">医療施設を選択してください</option>
                     @foreach($factory_select as $factory_selects)
-                        <option value="{{ $factory_selects->id }}" @if(old('medical_factories_id') == $factory_selects->id) selected  @endif>{{ $factory_selects->factory_name }}</option>
+                        <option value="{{ $factory_selects->id }}" @if(old('medical_factory_id') == $factory_selects->id) selected  @endif>{{ $factory_selects->factory_name }}</option>
                     @endforeach
             </select>
         </div>
@@ -65,6 +67,8 @@
         <div>
             <input type="submit" value="お薬登録">
         </div>
-    </form> 
+    </form>
+    
+
 </body>
 </html>

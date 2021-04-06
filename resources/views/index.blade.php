@@ -20,10 +20,7 @@
 <body>
     @include('header')
     <main class="py-4">
-            <a href="{{ route('post.create') }}">お薬登録</a>
-            <a href="{{ route('photo.create') }}">画像登録</a>
-            <a href="{{ route('dosing.create') }}">服用時間登録</a>
-            <a href="{{ route('show') }}">お薬手帳</a>
+        <a href="route('calendar')">かれんだー</a>
             @foreach ($expired as $dosing)
                 <div class="alert">
                     <form action="{{ route('flag_update') }}" method="POST">

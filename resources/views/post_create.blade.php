@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
     <title>お薬登録ページ</title>
 </head>
 <body>
@@ -47,10 +46,10 @@
             @endif 
         </div>
         <div>
-            <select name="medical_factories_id">
+            <select name="medical_factory_id">
                 <option value="0">医療施設を選択してください</option>
                     @foreach($factory_select as $factory_selects)
-                        <option value="{{ $factory_selects->id }}" @if(old('medical_factories_id') == $factory_selects->id) selected  @endif>{{ $factory_selects->factory_name }}</option>
+                        <option value="{{ $factory_selects->id }}" @if(old('medical_factory_id') == $factory_selects->id) selected  @endif>{{ $factory_selects->factory_name }}</option>
                     @endforeach
             </select>
         </div>
