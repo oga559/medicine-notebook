@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\User;
 use Illuminate\Http\Request;
 use App\WeightLog;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\WeightGraphRequest;
 
 class WeightGraphController extends Controller
 {
@@ -24,21 +27,7 @@ class WeightGraphController extends Controller
         }
         return view("weight_graph",compact('weight_log','label'));
     }
-    public function store(Request $request){
-        $this->validate(
-            $request,
-            [
-                'weight' => 'required|integer|digits_between:1,4',
-                'date_key'  => 'required|unique:weight_logs,date_key'
-            ],
-            [
-                'weight.required' => '体重を入力してください',
-                'weight.integer' => '体重は英数字で入力してください',
-                'weight.digits_between' => '体重は4桁以下で入力してください',
-                'date_key.required' => '日付を入力してください',
-                'date_key.unique' => 'その日付はすでに入力されています'
-            ]
-        );
+    public function store(WeightGraphRequest $request){
         $weight = $request->all();
         //postリクエストをdbに送信
         WeightLog::create($weight);

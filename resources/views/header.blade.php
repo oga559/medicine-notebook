@@ -16,7 +16,10 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('index') }}">ユーザーページ</a>
+                        <a class="nav-link" href="{{ route('index') }}">服用時間確認</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('dosing.create') }}">服用時間登録</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('show') }}">お薬手帳</a>
@@ -26,9 +29,6 @@
                     </li>
                     <a class="nav-link" href="{{ route('photo.create') }}">画像登録</a>
                     <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
-                        <a  class="nav-link" href="{{ route('dosing.create') }}">服用時間登録</a>
                     </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('show_graph') }}">体重管理</a>

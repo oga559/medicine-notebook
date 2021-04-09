@@ -11,10 +11,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/show.css') }}">
-    <title>お薬登録ページ</title>
+    <link href="{{ asset('css/create.css') }}" rel="stylesheet">
 </head>
 <body>
     @include('header')
@@ -35,15 +36,21 @@
         @else
             <p>医療施設は登録されていません</p>
         @endif
-        <span>メモ:</span>
-        <textarea cols="50" rows="5" readonly>{{ $posts->note }}</textarea>
+        <label>メモ</label>
+        <div>
+            <textarea cols="50" rows="5" readonly>{{ $posts->note }}</textarea>
+        </div>
         <a href="{{ route('post_edit',$posts->id) }}">編集ページ</a>
         @endforeach
     </div>
     <div class="split-box right-box">
         <h2>画像登録</h2>
         @foreach($photo as $photos)
-        <span>お薬画像：</span><img src="storage/images/{{ $photos->photo }}" width="200px" height="100px">
+        <label>お薬画像：</label>
+        <div>
+            <img src="storage/images/{{ $photos->photo }}" class="show_img">
+        </div>
+        <div>
             <p>処方日：{{ Str::limit($photos->prescription_date,10,'') }}</p>
             @if($photos->medical_subjects)
                 <p>診療科目：{{ $photos->medical_subjects }}</p>
@@ -56,9 +63,12 @@
             @else
                 <p>医療施設は登録されていません</p>
             @endif
-            <span>メモ:</span>
-            <textarea cols="50" rows="5" readonly>{{ $photos->note }}</textarea>
+            <label>メモ</label>
+            <div>
+                <textarea cols="50" rows="5" readonly>{{ $photos->note }}</textarea>
+            </div>
             <a href="{{ route('photo_edit',$photos->id) }}">編集ページ</a>
+        </div>    
         @endforeach
     </div>
 </body>

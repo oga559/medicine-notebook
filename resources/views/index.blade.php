@@ -24,7 +24,7 @@
             <form action="{{ route('flag_update') }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <h3>まだお薬を飲んでいません</h3>
+                <h3>登録時間が過ぎています、早くお薬を飲んでください！</h3>
                 <p>お薬名：{{ $dosing->drug_name }}</p>
                 <p>服用時間：{{ Str::limit($dosing->dosing_time,16,'') }}</p>
                 <input type="hidden" value="{{ $dosing->id }}" name="id">
@@ -46,6 +46,21 @@
                 <p>服用時間：{{ Str::limit($dosing->dosing_time,16,'') }}</p>
                 <input type="hidden" value="{{ $dosing->id }}" name="id">
                 <input type="submit" value="登録を削除します">
+            </form>
+        </div>
+        <hr>
+    @endforeach
+    <h2>服用履歴</h2>
+    <hr>
+    @foreach ($history as $histories)
+        <div>
+            <form action="{{ route('delete') }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <p>お薬名：{{ $histories->drug_name }}</p>
+                <p>服用時間：{{ Str::limit($histories->dosing_time,16,'') }}</p>
+                <input type="hidden" value="{{ $histories->id }}" name="id">
+                <input type="submit" value="履歴を削除します">
             </form>
         </div>
         <hr>
