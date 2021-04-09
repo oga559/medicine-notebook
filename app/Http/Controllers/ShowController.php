@@ -20,8 +20,6 @@ class ShowController extends Controller
       $now = Carbon::now();
       $post = Post::where('user_id',$user)->orderBy('prescription_date','asc')->get();
       $photo = Photo_post::where('user_id',$user)->orderBy('prescription_date','asc')->get();
-      //  $post = $user->posts->sortBy('prescription_date');
-      // $photo = $user->photo_posts->sortBy('prescription_date');
       return view('show',compact('now','post','photo'));
     }
     public function post_edit(Post $post)

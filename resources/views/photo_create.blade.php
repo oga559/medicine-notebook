@@ -68,7 +68,5 @@
             <input type="submit" value="お薬登録">
         </div>
     </form>
-    
-
 </body>
 </html>
