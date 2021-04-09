@@ -1,7 +1,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand fas fa-capsules" href="{{ url('/') }}">
                 お薬手帳DX
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -16,7 +16,13 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('index') }}">ユーザーページ</a>
+                        <a class="nav-link" href="{{ route('index') }}">服用時間確認</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('dosing.create') }}">服用時間登録</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('show') }}">お薬手帳</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('post.create') }}">お薬登録</a>
@@ -25,11 +31,9 @@
                     <li class="nav-item">
                     </li>
                     <li class="nav-item">
-                        <a  class="nav-link" href="{{ route('dosing.create') }}">服用時間登録</a>
+                        <a  class="nav-link" href="{{ route('show_graph') }}">体重管理</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('show') }}">お薬手帳</a>
-                    </li>
+                   
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">

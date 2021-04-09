@@ -42,7 +42,5 @@ Route::resource('photo', PhotoPostController::class)->only([
     'create',
     'store'
 ]);
-Route::get('calendar', 'CalendarController@index')->name('calendar');
-// Route::resource('calendar', CalendarController::class)->only([
-//     'index'
-// ]);
+Route::get('/graph', 'WeightGraphController@index')->name("show_graph");
+Route::post('/graph/store', 'WeightGraphController@store')->name("post_weight");

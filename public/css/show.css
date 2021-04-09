@@ -12,8 +12,15 @@ body{
 .left-box {
 	left:0;
 	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.left-box::-webkit-scrollbar {
+	display: none;
 }
 .right-box {
 	right:0;
-	overflow-y:scroll;
+	overflow:scroll;
+}
+.right-box::-webkit-scrollbar {
+	display: none;
 }

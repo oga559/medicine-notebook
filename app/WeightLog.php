@@ -1,0 +1,18 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class WeightLog extends Model
+{
+    protected $fillable = [
+        'user_id',
+        'weight',
+        'date_key'
+    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
