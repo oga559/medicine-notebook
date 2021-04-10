@@ -26,7 +26,7 @@ class WeightGraphRequest extends FormRequest
     public function rules()
     {
         return [
-            'weight' => 'required|integer|digits_between:1,4',
+            'weight' => 'required|numeric',
             'date_key' => [
                 'required',
                 Rule::unique('weight_logs')->where('date_key',$this->date_key)->where('user_id',Auth::id())
@@ -37,8 +37,7 @@ class WeightGraphRequest extends FormRequest
     {
         return [
             'weight.required' => '体重を入力してください',
-            'weight.integer' => '体重は英数字で入力してください',
-            'weight.digits_between' => '体重は4桁以下で入力してください',
+            'weight.numeric' => '体重は英数字で入力してください',
             'date_key.required' => '日付を入力してください',
             'date_key.unique' => 'その日付はすでに入力されています'
         ];
