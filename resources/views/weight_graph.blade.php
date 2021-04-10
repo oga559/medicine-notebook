@@ -14,7 +14,7 @@
     <form action="{{ route('post_weight') }}" method="POST">
         @csrf 
         <input type="hidden" value="{{ Auth::id() }}" name="user_id">
-        <h2>体重を管理しよう</h2>
+        <h2>体重を管理しよう！！</h2>
 		<label>体重(少数点3桁で切り上げされます)</label>
         <div>
             <input type="text" name="weight" value="{{ old('weight') }}">
