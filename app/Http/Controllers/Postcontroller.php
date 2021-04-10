@@ -8,7 +8,7 @@ use App\Medical_factory;
 use Carbon\Carbon;
 use App\Post;
 
-class Postcontroller extends Controller
+class PostController extends Controller
 {
     public function create()
     {
