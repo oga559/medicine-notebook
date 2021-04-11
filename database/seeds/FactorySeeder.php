@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Medical_factory;
 use Faker\Provider\Medical;
 
-class Medical_factorySeeder extends Seeder
+class FactorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
