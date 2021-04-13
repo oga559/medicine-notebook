@@ -21,19 +21,21 @@ Route::patch('flag/update', 'IndexController@update')->name('flag_update');
 Route::delete('delete', 'IndexController@delete')->name('delete');
 //お薬手帳ページのルート
 Route::get('show', 'ShowController@show')->middleware('auth')->name('show');
-Route::get('show/post_edit/{post}', 'ShowController@post_edit')->middleware('auth')->name('post_edit');
-Route::get('show/photo_edit/{photo}', 'ShowController@photo_edit')->middleware('auth')->name('photo_edit');
-Route::put('show/update', 'ShowController@post_update')->name('post_update');
-Route::put('photo/update', 'ShowController@photo_update')->name('photo_update');
+//お薬手帳のお薬投稿の更新削除ルート
+Route::get('show/post_edit/{post}', 'ShowController@post_edit')->name('post_edit');
+Route::put('post/update', 'ShowController@post_update')->name('post_update');
 Route::delete('post/delete', 'ShowController@post_delete')->name('post_delete');
+//お薬手帳の画像登録の更新削除ルート
+Route::get('show/photo_edit/{photo}', 'ShowController@photo_edit')->name('photo_edit');
+Route::put('photo/update', 'ShowController@photo_update')->name('photo_update');
 Route::delete('photo/delete', 'ShowController@photo_delete')->name('photo_delete');
-//お薬投稿のルート
-Route::resource('post', PostController::class)->only([
+//服用時間登録のルート
+Route::resource('dosing', DosingController::class)->only([
     'create',
     'store'
 ]);
-//服用時間登録のルート
-Route::resource('dosing', DosingController::class)->only([
+//お薬投稿のルート
+Route::resource('post', PostController::class)->only([
     'create',
     'store'
 ]);
@@ -42,5 +44,8 @@ Route::resource('photo', PhotoPostController::class)->only([
     'create',
     'store'
 ]);
-Route::get('/graph', 'WeightGraphController@index')->name("show_graph");
-Route::post('/graph/store', 'WeightGraphController@store')->name("post_weight");
+//体重管理ページのルート
+Route::resource('graph', WeightGraphController::class)->only([
+    'index',
+    'store'
+]);
