@@ -31,7 +31,7 @@
                     <li class="nav-item">
                     </li>
                     <li class="nav-item">
-                        <a  class="nav-link" href="{{ route('show_graph') }}">体重管理</a>
+                        <a  class="nav-link" href="{{ route('graph.index') }}">体重管理</a>
                     </li>
                    
                     <!-- Authentication Links -->

@@ -19,14 +19,14 @@ class PostController extends Controller
             [
                 'drug_name' => 'required|max:255',
                 'prescription_date'  => 'required',
-                'medical_subjects'  => 'max:255',
+                'medical_subjects'  => 'max:100',
                 'note'  => 'max:300'
             ],
             [
                 'drug_name.required' => 'お薬名を入力してください',
                 'drug_name.max'   => 'お薬名は255文字以下で入力してください',
                 'prescription_date.required'      => '処方日を入力してください',
-                'medical_subjects.max'  => '診療科目名は、255文字以下で入力してください',
+                'medical_subjects.max'  => '診療科目名は、100文字以下で入力してください',
                 'note.max'    => 'メモは、300文字以下で入力してください',
             ]
         );
@@ -34,6 +34,6 @@ class PostController extends Controller
         $post = $request->all();
         //postリクエストをdbに送信
         Post::create($post);
-        return redirect('/');
+        return redirect('show');
     }
 }

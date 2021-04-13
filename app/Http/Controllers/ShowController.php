@@ -40,14 +40,14 @@ class ShowController extends Controller
         [
             'drug_name' => 'required|max:255',
             'prescription_date'  => 'required',
-            'medical_subjects'  => 'max:255',
+            'medical_subjects'  => 'max:100',
             'note'  => 'max:300'
         ],
         [
             'drug_name.required' => 'お薬名を入力してください',
             'drug_name.max'   => 'お薬名は255文字以下で入力してください',
             'prescription_date.required'      => '処方日を入力してください',
-            'medical_subjects.max'  => '診療科目名は、255文字以下で入力してください',
+            'medical_subjects.max'  => '診療科目名は、100文字以下で入力してください',
             'note.max'    => 'メモは、300文字以下で入力してください',
         ]
     );
@@ -62,16 +62,16 @@ class ShowController extends Controller
         [
             'photo' => 'required|file|image',
             'prescription_date'  => 'required',
-            'medical_subjects'  => 'max:255',
+            'medical_subjects'  => 'max:100',
             'note'  => 'max:300'
         ],
         [
             'photo.required' => '画像を選択して下さい。',
             'photo.file' => '登録する画像はファイルにして下さい。',
             'photo.image' => 'ファイルは画像を選択して下さい',
-            'prescription_date.required'      => '処方日を入力してください',
-            'medical_subjects.max'  => '診療科目名は、255文字以下で入力してください',
-            'note.max'    => 'メモは、300文字以下で入力してください',
+            'prescription_date.required' => '処方日を入力してください',
+            'medical_subjects.max' => '診療科目名は、100文字以下で入力してください',
+            'note.max' => 'メモは、300文字以下で入力してください',
         ]
     );
       //削除する画像を取得

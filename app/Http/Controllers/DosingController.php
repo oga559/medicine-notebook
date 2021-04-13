@@ -43,6 +43,7 @@ class DosingController extends Controller
                 'note.max'    => 'メモは、300文字以下で入力してください',
             ]
         );
+        //一週間一括登録機能
         //リクエストのデータ型がすべてstring型なので、「==」にしてデータ型が判定に反映されないようにした
         if($request->bulk_post==1){
             $now = Carbon::now();

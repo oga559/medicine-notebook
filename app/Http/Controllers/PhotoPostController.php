@@ -32,7 +32,7 @@ class PhotoPostController extends Controller
             [
                 'photo' => 'required|file|image',
                 'prescription_date'  => 'required',
-                'medical_subjects'  => 'max:255',
+                'medical_subjects'  => 'max:100',
                 'note'  => 'max:300'
             ],
             [
@@ -40,7 +40,7 @@ class PhotoPostController extends Controller
                 'photo.file' => '登録する画像はファイルにして下さい。',
                 'photo.image' => 'ファイルは画像を選択して下さい',
                 'prescription_date.required'      => '処方日を入力してください',
-                'medical_subjects.max'  => '診療科目名は、255文字以下で入力してください',
+                'medical_subjects.max'  => '診療科目名は、100文字以下で入力してください',
                 'note.max'    => 'メモは、300文字以下で入力してください',
             ]
         );
@@ -56,7 +56,6 @@ class PhotoPostController extends Controller
         $member->prescription_date = $request->prescription_date;
         $member->photo = $filename;
         $member->save();
-        return redirect('/');
+        return redirect('show');
     }
-
 }

@@ -10,12 +10,11 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/show.css') }}">
-    <link href="{{ asset('css/create.css') }}" rel="stylesheet">
 </head>
 <body>
     @include('header')
@@ -23,18 +22,18 @@
         <h2>お薬投稿</h2>
         @foreach($post as $posts)         
         <h4>お薬名：{{ $posts->drug_name }}</h4>
-        <p>処方日：{{ Str::limit($posts->prescription_date,10,'') }}</p>
+        <label>処方日：{{ Str::limit($posts->prescription_date,10,'') }}</label>
         {{-- 診療科目を登録しているか判断する --}}
         @if($posts->medical_subjects)
-            <p>診療科目：{{ $posts->medical_subjects }}</p>
+            <label>診療科目：{{ $posts->medical_subjects }}</label>
         @else
-            <p>診療科目：診療科目が登録されていません</p> 
+            <label>診療科目：診療科目が登録されていません</label> 
         @endif
         {{-- 医療施設を選択しているか判断する --}}
         @if ($posts->medical_factory)
-            <p>医療施設：{{ $posts->medical_factory->factory_name }}</p>
+            <label>医療施設：{{ $posts->medical_factory->factory_name }}</label>
         @else
-            <p>医療施設は登録されていません</p>
+            <label>医療施設：登録されていません</label>
         @endif
         <label>メモ</label>
         <div>
@@ -51,17 +50,17 @@
             <img src="storage/images/{{ $photos->photo }}" class="show_img">
         </div>
         <div>
-            <p>処方日：{{ Str::limit($photos->prescription_date,10,'') }}</p>
+            <label>処方日：{{ Str::limit($photos->prescription_date,10,'') }}</label>
             @if($photos->medical_subjects)
-                <p>診療科目：{{ $photos->medical_subjects }}</p>
+                <label>診療科目：{{ $photos->medical_subjects }}</label>
             @else
-                <p>診療科目：診療科目が登録されていません</p> 
+                <label>診療科目：診療科目が登録されていません</label> 
             @endif
             {{-- 医療施設を選択しているか判断する --}}
             @if ($photos->medical_factory)
-                <p>医療施設：{{ $photos->medical_factory->factory_name }}</p>
+                <label>医療施設：{{ $photos->medical_factory->factory_name }}</label>
             @else
-                <p>医療施設は登録されていません</p>
+                <label>医療施設：登録されていません</label>
             @endif
             <label>メモ</label>
             <div>

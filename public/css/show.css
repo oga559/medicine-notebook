@@ -24,3 +24,18 @@ body{
 .right-box::-webkit-scrollbar {
 	display: none;
 }
+label{
+	display: block;
+	word-wrap: break-word;
+	width: 70%;
+}
+textarea{
+    resize: none;
+    width: 50%;
+    height: 60px;
+}
+.show_img{
+    width: 200px; 
+    height: 150px;
+	display: block;
+}
