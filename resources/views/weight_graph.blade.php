@@ -39,8 +39,12 @@
             <input type="submit" value="登録">
         </form>
         <h2>体重管理グラフ</h2>
-        <canvas id="myChart"></canvas>
-        <script id="script" src="{{ asset('js/weight.js') }}" type="text/javascript" data-param='<?php echo json_encode([$label,$weight_log]);?>'></script>
+        <div class="wrap-chart">
+            <div class="chart-container" style="position: relative; width:80vw; height:80vh;">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
     </main>
+    <script id="script" src="{{ asset('js/weight.js') }}" type="text/javascript" data-param='<?php echo json_encode([$label,$weight_log]);?>'></script>
 </body>
 </html>
