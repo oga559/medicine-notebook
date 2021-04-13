@@ -57,7 +57,7 @@
             </div>
             <label>医療施設名</label>
             <div>
-                <select name="medical_factory_id">
+                <select name="medical_factory_id" class="select">
                     <option value="0">医療施設を選択してください</option>
                     @foreach($factory_select as $factory_selects)
                     {{-- 登録画面で登録していたか判断し、登録していたらoptionを保持して選択済みにする --}}

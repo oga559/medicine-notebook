@@ -21,6 +21,7 @@ var myChart = new Chart(ctx, {
 		title: {
 			display: true,
 			text: '体重ログ'
-		}
+		},
+		maintainAspectRatio: false 
 	}
 });
