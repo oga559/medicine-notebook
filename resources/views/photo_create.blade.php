@@ -18,7 +18,6 @@
     <link href="{{ asset('css/photo.css') }}" rel="stylesheet">
     <title>画像投稿ページ</title>
 </head>
-</head>
 <body>
     @include('header')
     <main>
